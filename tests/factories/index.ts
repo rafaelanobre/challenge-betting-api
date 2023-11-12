@@ -10,5 +10,18 @@ export async function createParticipant(){
             updatedAt: new Date(),
         }
     })
+}
 
+export async function createGame(){
+    return await prisma.game.create({
+        data:{
+            homeTeamName: faker.company.name(),
+            awayTeamName: faker.company.name(),
+            homeTeamScore: 0,
+            awayTeamScore: 0,
+            isFinished: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }
+    })
 }

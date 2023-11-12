@@ -2,7 +2,7 @@ import supertest from "supertest";
 import { faker } from '@faker-js/faker';
 import app from "../src/app";
 import prisma from "../src/database/index";
-import { createParticipant } from "./factories/participants-factory";
+import { createParticipant } from "./factories/index";
 import { ParticipantCreate } from "../src/protocols/index";
 
 const api = supertest(app);
