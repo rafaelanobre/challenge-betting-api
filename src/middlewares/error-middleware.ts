@@ -1,16 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 
+const errorStatusMapping = {
+    BadRequestError: httpStatus.BAD_REQUEST,
+    InvalidDataError: httpStatus.UNPROCESSABLE_ENTITY,
+    NotFoundError: httpStatus.NOT_FOUND,
+    ConflictError: httpStatus.CONFLICT,
+    InternalServerError: httpStatus.INTERNAL_SERVER_ERROR,
+};
+
 export default function errorHandler(error, req: Request, res: Response, next: NextFunction) {
     console.log(error);
 
-    if (error.type === "BadRequestError") {
-        return res.status(httpStatus.BAD_REQUEST).send(error.message);
-    }
-
-    if (error.type === "InvalidDataError") {
-        return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
-    }
-
-    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Sorry, something went wrong");
+    const status = errorStatusMapping[error.type] || httpStatus.INTERNAL_SERVER_ERROR;
+    return res.status(status).send(error.message || "Sorry, something went wrong");
 }

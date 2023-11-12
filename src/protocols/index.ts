@@ -21,3 +21,18 @@ export type Bet = {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type GameWithBets = {
+    id: number;
+    homeTeamName:  string;
+    awayTeamName:  string;
+    homeTeamScore: number;
+    awayTeamScore: number;
+    isFinished: boolean;
+    bets: Bet[];
+    createdAt: Date;
+    updatedAt: Date;
+}
+export type Game = Omit<GameWithBets, "bets">
+export type GameCreate = Omit<GameWithBets, "id" | "homeTeamScore" | "awayTeamScore" | "isFinished" | "bets" | "createdAt" | "updatedAt">
+export type GameUpdate = Omit<GameWithBets, "id" | "homeTeamName" | "awayTeamName" | "isFinished" | "bets" | "createdAt" | "updatedAt">

@@ -11,3 +11,17 @@ export function invalidDataError(details: string) {
         message: `Invalid data: ${details}`,
     };
 }
+
+export function notFoundError(details: string) {
+    return {
+        type: 'NotFoundError',
+        message: `${details} not found`
+    }
+}
+
+export function conflictError() {
+    return {
+        type: 'ConflictError',
+        message: `Conflict, you cannot do this`
+    }
+}

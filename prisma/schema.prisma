@@ -41,7 +41,7 @@ model Bet {
   homeTeamScore Int
   awayTeamScore Int
   amountBet Int
-  status String
+  status BetStatus
   amountWon Int?
   
   createdAt DateTime
@@ -49,4 +49,10 @@ model Bet {
 
   game Game   @relation(fields: [gameId], references: [id])
   participant Participant @relation(fields: [participantId], references: [id])
+}
+
+enum BetStatus {
+  PENDING
+  WON
+  LOST
 }
