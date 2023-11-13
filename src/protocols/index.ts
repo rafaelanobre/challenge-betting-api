@@ -22,6 +22,9 @@ export type Bet = {
     updatedAt: Date;
 }
 
+export type BetCreate = Omit<Bet, "id" | "status" | "amountWon" | "createdAt" | "updatedAt">
+export type BetResult = Omit<Bet, "id" | "gameId" | "participantId" | "homeTeamScore" | "awayTeamScore" | "amountBet" | "createdAt" | "updatedAt" >
+
 export type GameWithBets = {
     id: number;
     homeTeamName:  string;

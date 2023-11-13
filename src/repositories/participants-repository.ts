@@ -16,3 +16,12 @@ export async function create(participant: ParticipantCreate) {
     });
     return result;
 }
+
+export async function getById(id: number) {
+    const result: Participant  = await prisma.participant.findUnique({ where: { id } })
+    return result;
+}
+
+export async function update(balance: number, id: number){
+    await prisma.participant.update({ data:{ balance: balance }, where: { id } })
+}

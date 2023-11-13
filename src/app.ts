@@ -3,6 +3,7 @@ import "express-async-errors";
 import participantsRouter from "./routers/participants-router";
 import errorHandler from "./middlewares/error-middleware";
 import gamesRouter from "./routers/games-router";
+import betsRouter from "./routers/bets-router";
 
 const app = express();
 
@@ -10,6 +11,7 @@ app
     .use(json())
     .use('/participants', participantsRouter)
     .use('/games', gamesRouter)
+    .use('/bets', betsRouter)
     .use(errorHandler)
 
 app.get("/health", (req: Request, res: Response) => {
