@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "migration:run": "prisma migrate deploy",
     "test": "dotenv -e .env.test prisma migrate deploy & dotenv -e .env.test jest -- --coverage",
     "dev": "nodemon ./src/server.ts",
-    "start": "node ./src/app.js"
+    "start": "npm run migration:run && node dist/server.js"
   },
   "repository": {
     "type": "git",
